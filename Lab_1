@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        public static int Сorrect_Сheck(int count) {
+            Console.WriteLine("Enter 0,1 or 2");
+            count++;
+            int number;
+            string input = Console.ReadLine();
+            bool result = int.TryParse(input,out number);
+            if (result == true && number <= 2 && number >= 1)
+                return number;
+            else
+                Console.Write("Number must be 0,1 or 2");
+            for (int y = 0; y< count; y++) {
+                Console.Write("!"); }
+            Console.WriteLine();
+                number = Сorrect_Сheck(count);
+            return number;
+        }
+        public static double Number_Сheck(int count,string question)
+        {
+            Console.WriteLine(question);
+            count++;
+            double number;
+            string input = Console.ReadLine();
+            bool result = double.TryParse(input, out number);
+            if (result == true)
+                return number;
+            else
+                Console.Write("Enter must be numerical");
+            for (int y = 0; y < count; y++)
+            {
+                Console.Write("!");
+            }
+            Console.WriteLine();
+            number = Number_Сheck(count, question);
+            return number;
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("[0] Exit");
+            Console.WriteLine("[1] Hello World!");
+            Console.WriteLine("[2] Calc: <Z^2+7+sqrt(X)>");
+            int count = 0;
+            int number = Сorrect_Сheck(count);
+            Console.WriteLine(number);
+            switch (number)
+            {
+                case 0:
+                    goto link1;
+
+                case 1:
+                    Console.Clear();
+                    Console.WriteLine("Hello World!");
+                    break;
+
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine("Calc: <Z^2+7+sqrt(X)>");
+                    string question = "Enter number X";
+                    double X = Number_Сheck(count, question);
+                    question = "Enter number Z";
+                    double Z = Number_Сheck(count, question);
+                    double ans = Math.Pow(Z,2)+7+Math.Sqrt(X);
+                    Console.Write("answer = ");
+                    Console.Write(ans);
+                    break;
+
+            }
+            Console.ReadLine();
+        link1:;
+        }
+    }
+}
